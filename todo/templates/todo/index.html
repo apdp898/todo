@@ -1,0 +1,12 @@
+<h1>To Do</h1>
+<form method="post">{% csrf_token %}
+<input name="title"><button>Add</button>
+</form>
+<ul>
+{% for t in tasks %}
+<li>{% if t.completed %}<s>{{t.title}}</s>{% else %}{{t.title}}{% endif %}
+<a href="/complete/{{t.id}}/">✔</a>
+<a href="/delete/{{t.id}}/">✖</a>
+</li>
+{% endfor %}
+</ul>
